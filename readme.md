@@ -29,3 +29,4 @@ Navigate to this folder in your terminal and run this `npm run dev` .
 5. Installed concurrently to compile TS to JS and run server simultaneously.
 6. Learnt to write markDown with the help of chatGPT.
 7. Started writing readme file for this project.
+8. Learnt about how to authenticate in github and pushed my code.
