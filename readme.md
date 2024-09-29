@@ -30,3 +30,9 @@ Navigate to this folder in your terminal and run this `npm run dev` .
 6. Learnt to write markDown with the help of chatGPT.
 7. Started writing readme file for this project.
 8. Learnt about how to authenticate in github and pushed my code.
+
+### 29th September
+
+1. Added frontend setup using angular.
+2. Created get all tasks API following REST principles.
+3. Udated frontend to fetch all tasks on page load and display titles.
