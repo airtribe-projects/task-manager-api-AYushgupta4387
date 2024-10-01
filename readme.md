@@ -36,3 +36,10 @@ Navigate to this folder in your terminal and run this `npm run dev` .
 1. Added frontend setup using angular.
 2. Created get all tasks API following REST principles.
 3. Udated frontend to fetch all tasks on page load and display titles.
+
+### 1st October
+
+1. Created and updated APIs for getting all tasks, getting a single task by id and creating a new task.
+2. Added a new package called nanoid to generate unique ids.
+3. Spent half an hour in ts congifurations.
+4. Improved error handling.

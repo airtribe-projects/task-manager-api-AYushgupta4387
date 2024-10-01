@@ -16,7 +16,7 @@ export class AppComponent {
   constructor() {}
 
   ngOnInit() {
-    fetch('http://localhost:3000/task')
+    fetch('http://localhost:3000/api/v1/tasks/2')
       .then((res) => res.json())
       .then((data) => {
         this.allTasks = data?.tasks;

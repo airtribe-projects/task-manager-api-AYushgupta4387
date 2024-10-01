@@ -89,6 +89,12 @@
       "title": "Install jsonwebtoken",
       "description": "Install jsonwebtoken",
       "completed": false
+    },
+    {
+      "id": "FIlxjHoA1lNhppGY2T6ZZ",
+      "title": "I hate ts configurations",
+      "description": "blah blah blah",
+      "completed": false
     }
   ]
 }
