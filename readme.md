@@ -43,3 +43,9 @@ Navigate to this folder in your terminal and run this `npm run dev` .
 2. Added a new package called nanoid to generate unique ids.
 3. Spent half an hour in ts congifurations.
 4. Improved error handling.
+
+### 2nd October
+
+1. Completed all the APIs for CRUD operations.
+2. Improved error handling and HTTP status codes.
+3. Changed the folder structure to better it.

@@ -1,10 +1,9 @@
 {
   "tasks": [
     {
-      "id": 1,
-      "title": "Set up environment",
-      "description": "Install Node.js, npm, and git",
-      "completed": true
+      "id": "1",
+      "title": "1st Task updated",
+      "description": "Woohoo!"
     },
     {
       "id": 2,
@@ -55,24 +54,6 @@
       "completed": false
     },
     {
-      "id": 10,
-      "title": "Install passport-local",
-      "description": "Install passport-local",
-      "completed": false
-    },
-    {
-      "id": 11,
-      "title": "Install passport-local-mongoose",
-      "description": "Install passport-local-mongoose",
-      "completed": false
-    },
-    {
-      "id": 12,
-      "title": "Install express-session",
-      "description": "Install express-session",
-      "completed": false
-    },
-    {
       "id": 13,
       "title": "Install connect-mongo",
       "description": "Install connect-mongo",
@@ -93,6 +74,18 @@
     {
       "id": "FIlxjHoA1lNhppGY2T6ZZ",
       "title": "I hate ts configurations",
+      "description": "blah blah blah",
+      "completed": false
+    },
+    {
+      "id": "TeB746-gsi4zli9cc_9Yb",
+      "title": "All tasks completed bro!",
+      "description": "blah blah blah",
+      "completed": false
+    },
+    {
+      "id": "aU3zKgaOqIKhNypmYZt9V",
+      "title": "All tasks completed bro!",
       "description": "blah blah blah",
       "completed": false
     }

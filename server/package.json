@@ -2,12 +2,12 @@
   "name": "task-manager",
   "version": "1.0.0",
   "description": "Assignment 1 for backend engineering launchpad",
-  "main": "index.js",
+  "main": "dist/src/index.js",
   "scripts": {
     "pretest": "node -e \"if (process.version.slice(1).split('.')[0] < 18) { console.error('Unsupported Node.js version, please use version 18'); process.exit(1); }\"",
     "test": "tap test/*.js --disable-coverage",
-    "start": "nodemon apps.js",
-    "dev": "concurrently \"tsc --watch\" \"nodemon dist/index.js\""
+    "start": "nodemon dist/src/index.js",
+    "dev": "concurrently \"tsc --watch\" \"nodemon dist/src/index.js\""
   },
   "author": "Airtribe",
   "license": "ISC",
