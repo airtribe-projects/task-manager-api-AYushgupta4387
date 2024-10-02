@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
+import axios from 'axios';
+
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -9,17 +11,19 @@ import { CommonModule } from '@angular/common';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   allTasks: any;
-  title = 'taskmanager-frontend';
+  title = 'Task Manager';
 
   constructor() {}
 
-  ngOnInit() {
-    fetch('http://localhost:3000/api/v1/tasks/2')
-      .then((res) => res.json())
-      .then((data) => {
-        this.allTasks = data?.tasks;
+  ngOnInit() {}
+
+  getAllTasks() {
+    axios
+      .get('http://localhost:3000/api/v1/tasks')
+      .then((response) => {
+        this.allTasks = response.data?.tasks;
       })
       .catch((error) => {
         console.log('Error fetching tasks:', error);

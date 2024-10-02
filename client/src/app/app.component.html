@@ -1,6 +1,21 @@
-<ul>
-  <p>TASKS</p>
-  <li *ngFor="let task of allTasks">
-    {{ task?.title }}
-  </li>
-</ul>
+<div class="main-container">
+  <h1 class="main-heading">TASK MANAGER</h1>
+  <h2 class="sub-heading">What all can I do?</h2>
+
+  <div class="crud-operations-container">
+    <div class="get-all-task-container">
+      <div class="heading-container">
+        <img src="/assets/1.png" alt="1" class="image image-one" />
+        <h2 class="tertiary-heading">Get All Tasks</h2>
+        <button (click)="getAllTasks()" class="button">GET all Tasks</button>
+      </div>
+
+      <ul class="tasks-list">
+        <li class="task-list-item" *ngFor="let task of allTasks">
+          <h3>{{ task?.title }}</h3>
+          <p>{{ task?.description }}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
