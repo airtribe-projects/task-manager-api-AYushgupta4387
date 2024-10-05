@@ -1,0 +1,34 @@
+{
+  "name": "task-manager",
+  "version": "1.0.0",
+  "description": "Assignment 1 for backend engineering launchpad",
+  "main": "dist/src/index.js",
+  "scripts": {
+    "pretest": "node -e \"if (process.version.slice(1).split('.')[0] < 18) { console.error('Unsupported Node.js version, please use version 18'); process.exit(1); }\"",
+    "test": "tap src/test/*.js --disable-coverage",
+    "start": "nodemon dist/src/index.js",
+    "dev": "concurrently \"tsc --watch\" \"nodemon dist/src/index.js\""
+  },
+  "author": "Airtribe",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.7.4",
+    "concurrently": "^9.0.1",
+    "supertest": "^6.3.4",
+    "tap": "^18.8.0",
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "nanoid": "^5.0.7",
+    "ts-node": "^10.9.2"
+  },
+  "engines": {
+    "node": ">= 18.0.0"
+  },
+  "type": "module"
+}
