@@ -1,93 +1,109 @@
 {
   "tasks": [
     {
-      "id": "1",
-      "title": "1st Task updated",
-      "description": "Woohoo!"
+      "id": 1,
+      "title": "Set up environment",
+      "description": "Install Node.js, npm, and git",
+      "completed": true,
+      "priority": "medium"
     },
     {
       "id": 2,
       "title": "Create a new project",
       "description": "Create a new project using the Express application generator",
-      "completed": true
+      "completed": true,
+      "priority": "low"
     },
     {
       "id": 3,
       "title": "Install nodemon",
       "description": "Install nodemon as a development dependency",
-      "completed": true
+      "completed": true,
+      "priority": "high"
     },
     {
       "id": 4,
       "title": "Install Express",
       "description": "Install Express",
-      "completed": false
+      "completed": false,
+      "priority": "medium"
     },
     {
       "id": 5,
       "title": "Install Mongoose",
       "description": "Install Mongoose",
-      "completed": false
+      "completed": false,
+      "priority": "high"
     },
     {
       "id": 6,
       "title": "Install Morgan",
       "description": "Install Morgan",
-      "completed": false
+      "completed": false,
+      "priority": "low"
     },
     {
       "id": 7,
       "title": "Install body-parser",
       "description": "Install body-parser",
-      "completed": false
+      "completed": false,
+      "priority": "medium"
     },
     {
       "id": 8,
       "title": "Install cors",
       "description": "Install cors",
-      "completed": false
+      "completed": false,
+      "priority": "high"
     },
     {
       "id": 9,
       "title": "Install passport",
       "description": "Install passport",
-      "completed": false
+      "completed": false,
+      "priority": "medium"
+    },
+    {
+      "id": 10,
+      "title": "Install passport-local",
+      "description": "Install passport-local",
+      "completed": false,
+      "priority": "low"
+    },
+    {
+      "id": 11,
+      "title": "Install passport-local-mongoose",
+      "description": "Install passport-local-mongoose",
+      "completed": false,
+      "priority": "high"
+    },
+    {
+      "id": 12,
+      "title": "Install express-session",
+      "description": "Install express-session",
+      "completed": false,
+      "priority": "medium"
     },
     {
       "id": 13,
       "title": "Install connect-mongo",
       "description": "Install connect-mongo",
-      "completed": false
+      "completed": false,
+      "priority": "low"
     },
     {
       "id": 14,
       "title": "Install dotenv",
       "description": "Install dotenv",
-      "completed": false
+      "completed": false,
+      "priority": "high"
     },
     {
       "id": 15,
       "title": "Install jsonwebtoken",
       "description": "Install jsonwebtoken",
-      "completed": false
-    },
-    {
-      "id": "FIlxjHoA1lNhppGY2T6ZZ",
-      "title": "I hate ts configurations",
-      "description": "blah blah blah",
-      "completed": false
-    },
-    {
-      "id": "TeB746-gsi4zli9cc_9Yb",
-      "title": "All tasks completed bro!",
-      "description": "blah blah blah",
-      "completed": false
-    },
-    {
-      "id": "aU3zKgaOqIKhNypmYZt9V",
-      "title": "All tasks completed bro!",
-      "description": "blah blah blah",
-      "completed": false
+      "completed": false,
+      "priority": "medium"
     }
   ]
 }

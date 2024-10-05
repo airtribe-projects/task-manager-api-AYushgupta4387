@@ -2,7 +2,6 @@ import express from "express";
 import fs from "fs/promises";
 import path from "path";
 import cors from "cors";
-import { nanoid } from "nanoid";
 const app = express();
 const port = 3000;
 app.use(cors());
@@ -20,22 +19,54 @@ const filePath = path.join(process.cwd(), "src/db/task.json");
 // Implement GET /tasks: Retrieve all tasks.
 app.get("/api/v1/tasks", async (req, res) => {
     const data = await fs.readFile(filePath, "utf8");
+    let tasks = JSON.parse(data).tasks;
     // Check if the file is empty and return an appropriate message
     if (data.length === 0) {
         return res.status(404).send("No tasks found.");
     }
-    res.status(200).json(JSON.parse(data));
+    if (req.query.completed) {
+        const isCompleted = req.query.completed === "true";
+        if (isCompleted) {
+            tasks = tasks.filter((task) => task.completed);
+        }
+        else {
+            tasks = tasks.filter((task) => !task.completed);
+        }
+    }
+    res.status(200).json(tasks);
 });
 // Implement GET /tasks/:id: Retrieve a specific task by its ID.
 app.get("/api/v1/tasks/:id", async (req, res) => {
-    const id = req.params.id;
+    const id = parseInt(req.params.id);
     const data = await fs.readFile(filePath, "utf8");
     const tasks = JSON.parse(data).tasks;
-    const task = tasks.find((task) => task.id == id);
+    const task = tasks.find((task) => task.id === id);
     if (!task) {
         return res.status(404).json({ message: "Task not found" });
     }
     res.status(200).json(task);
+});
+// Implement GET /tasks/priority/:level: Retrive tasks by level.
+app.get("/api/v1/tasks/priority/:level", async (req, res) => {
+    const level = req.params.level;
+    const data = await fs.readFile(filePath, "utf8");
+    let tasks = JSON.parse(data).tasks;
+    switch (level) {
+        case "low":
+            tasks = tasks.filter((task) => task.priority === level);
+            break;
+        case "medium":
+            tasks = tasks.filter((task) => task.priority === level);
+            break;
+        case "high":
+            tasks = tasks.filter((task) => task.priority === level);
+            break;
+        default:
+            return res
+                .status(400)
+                .send("Incorrect value of priority. It should be low, medium or high.");
+    }
+    return res.status(200).json(tasks);
 });
 // Implement POST /tasks: Create a new task with the required fields (title, description, completed).
 app.post("/api/v1/tasks", async (req, res) => {
@@ -44,46 +75,55 @@ app.post("/api/v1/tasks", async (req, res) => {
             .status(400)
             .json({ message: "Title and description are required." });
     }
+    const data = await fs.readFile(filePath, "utf8");
+    const tasks = JSON.parse(data).tasks || [];
     const newTask = {
-        id: nanoid(),
+        id: tasks.length > 0 ? tasks[tasks.length - 1].id + 1 : 1,
         title: req.body.title,
         description: req.body.description,
         completed: false,
     };
-    const data = await fs.readFile(filePath, "utf8");
-    const tasks = JSON.parse(data).tasks || [];
     tasks.push(newTask);
     await fs.writeFile(filePath, JSON.stringify({ tasks }, null, 2));
     res.status(201).json(newTask);
 });
 // Implement PUT /tasks/:id: Update an existing task by its ID.
 app.put("/api/v1/tasks/:id", async (req, res) => {
-    const id = req.params.id;
-    if (!req.body.title || !req.body.description || req.body.status) {
+    const id = parseInt(req.params.id);
+    if (!req.body.title ||
+        !req.body.description ||
+        req.body.completed === undefined) {
         return res
             .status(400)
-            .json({ message: "Title, description and status are required." });
+            .json({ message: "Title, description and completed are required." });
+    }
+    if (typeof req.body.completed !== "boolean") {
+        return res.status(400).json({ message: "Completed should be a boolean." });
     }
     const updatedTask = {
-        id: parseInt(id),
+        id: id,
         title: req.body.title,
         description: req.body.description,
-        completed: req.body.status,
+        completed: req.body.completed,
     };
     const data = await fs.readFile(filePath, "utf8");
     const tasks = JSON.parse(data).tasks;
-    const updatedTasks = tasks.map((task) => task.id == id ? { ...updatedTask } : task);
+    if (!tasks.find((task) => task.id === id)) {
+        return res.status(404).json({ message: "Task not found" });
+    }
+    const updatedTasks = tasks.map((task) => task.id === id ? { ...updatedTask } : task);
     await fs.writeFile(filePath, JSON.stringify({ tasks: updatedTasks }, null, 2));
     res.status(200).json(updatedTask);
 });
 // Implement DELETE /tasks/:id: Delete a task by its ID.
 app.delete("/api/v1/tasks/:id", async (req, res) => {
-    const id = req.params.id;
+    console.log("Received POST request with body:", req.body);
+    const id = parseInt(req.params.id);
     const data = await fs.readFile(filePath, "utf8");
     const tasks = JSON.parse(data).tasks;
-    if (!tasks.find((task) => task.id == id))
+    if (!tasks.find((task) => task.id === id))
         return res.status(404).json({ message: `No task with id: ${id} found.` });
-    const newTasks = tasks.filter((task) => task.id != id);
+    const newTasks = tasks.filter((task) => task.id !== id);
     await fs.writeFile(filePath, JSON.stringify({ tasks: newTasks }, null, 2));
     res.status(200).json({ message: "Task deleted successfully." });
 });

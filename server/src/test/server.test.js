@@ -1,30 +1,34 @@
-const tap = require("tap");
-const supertest = require("supertest");
-const app = require("../app");
-const server = supertest(app);
+import tap from "tap";
+import supertest from "supertest";
+import index from "../../dist/src/index.js";
 
-tap.test("POST /tasks", async (t) => {
+const server = supertest(index);
+
+tap.test("POST /api/v1/tasks", async (t) => {
   const newTask = {
     title: "New Task",
     description: "New Task Description",
     completed: false,
   };
-  const response = await server.post("/tasks").send(newTask);
+  const response = await server.post("/api/v1/tasks").send(newTask);
   t.equal(response.status, 201);
   t.end();
 });
 
-tap.test("POST /tasks with invalid data", async (t) => {
+tap.test("POST /api/v1/tasks with invalid data", async (t) => {
   const newTask = {
     title: "New Task",
   };
-  const response = await server.post("/tasks").send(newTask);
+  const response = await server.post("/api/v1/tasks").send(newTask);
   t.equal(response.status, 400);
   t.end();
 });
 
-tap.test("GET /tasks", async (t) => {
-  const response = await server.get("/tasks");
+tap.test("GET /api/v1/tasks", async (t) => {
+  const response = await server.get("/api/v1/tasks");
+
+  console.log(response.body);
+
   t.equal(response.status, 200);
   t.hasOwnProp(response.body[0], "id");
   t.hasOwnProp(response.body[0], "title");
@@ -37,8 +41,8 @@ tap.test("GET /tasks", async (t) => {
   t.end();
 });
 
-tap.test("GET /tasks/:id", async (t) => {
-  const response = await server.get("/tasks/1");
+tap.test("GET /api/v1/tasks/:id", async (t) => {
+  const response = await server.get("/api/v1/tasks/1");
   t.equal(response.status, 200);
   const expectedTask = {
     id: 1,
@@ -50,53 +54,53 @@ tap.test("GET /tasks/:id", async (t) => {
   t.end();
 });
 
-tap.test("GET /tasks/:id with invalid id", async (t) => {
-  const response = await server.get("/tasks/999");
+tap.test("GET /api/v1/tasks/:id with invalid id", async (t) => {
+  const response = await server.get("/api/v1/tasks/999");
   t.equal(response.status, 404);
   t.end();
 });
 
-tap.test("PUT /tasks/:id", async (t) => {
+tap.test("PUT /api/v1/tasks/:id", async (t) => {
   const updatedTask = {
     title: "Updated Task",
     description: "Updated Task Description",
     completed: true,
   };
-  const response = await server.put("/tasks/1").send(updatedTask);
+  const response = await server.put("/api/v1/tasks/1").send(updatedTask);
   t.equal(response.status, 200);
   t.end();
 });
 
-tap.test("PUT /tasks/:id with invalid id", async (t) => {
+tap.test("PUT /api/v1/tasks/:id with invalid id", async (t) => {
   const updatedTask = {
     title: "Updated Task",
     description: "Updated Task Description",
     completed: true,
   };
-  const response = await server.put("/tasks/999").send(updatedTask);
+  const response = await server.put("/api/v1/tasks/999").send(updatedTask);
   t.equal(response.status, 404);
   t.end();
 });
 
-tap.test("PUT /tasks/:id with invalid data", async (t) => {
+tap.test("PUT /api/v1/tasks/:id with invalid data", async (t) => {
   const updatedTask = {
     title: "Updated Task",
     description: "Updated Task Description",
     completed: "true",
   };
-  const response = await server.put("/tasks/1").send(updatedTask);
+  const response = await server.put("/api/v1/tasks/1").send(updatedTask);
   t.equal(response.status, 400);
   t.end();
 });
 
-tap.test("DELETE /tasks/:id", async (t) => {
-  const response = await server.delete("/tasks/1");
+tap.test("DELETE /api/v1/tasks/:id", async (t) => {
+  const response = await server.delete("/api/v1/tasks/1");
   t.equal(response.status, 200);
   t.end();
 });
 
-tap.test("DELETE /tasks/:id with invalid id", async (t) => {
-  const response = await server.delete("/tasks/999");
+tap.test("DELETE /api/v1/tasks/:id with invalid id", async (t) => {
+  const response = await server.delete("/api/v1/tasks/999");
   t.equal(response.status, 404);
   t.end();
 });

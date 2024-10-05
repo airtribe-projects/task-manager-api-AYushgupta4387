@@ -1,22 +1,36 @@
 ## Task Manager APIs
 
-### Project Requirements
-
-- Implement GET /tasks: Retrieve all tasks.
-- Implement GET /tasks/:id: Retrieve a specific task by its ID.
-- Implement POST /tasks: Create a new task with the required fields (title, description, completed).
-- Implement PUT /tasks/:id: Update an existing task by its ID.
-- Implement DELETE /tasks/:id: Delete a task by its ID.
-- Test all endpoints using Postman or curl to ensure proper functionality.
-
 ### About Project
 
-This project is written with typeScript following RESTful principles for developing APIs for CRUD operations. <br> <br>
+This project is made following RESTful principles for developing APIs for CRUD operations to manage tasks. Each task has this structure
+
+```json
+{
+  "id": 1,
+  "title": "Set up environment",
+  "description": "Install Node.js, npm, and git",
+  "completed": true,
+  "priority": "medium"
+}
+```
+
 This project is written in typeScript and it uses concurrently package to run both, the server and compiling TS to JS, in a single command, i. e., "npm run dev".
+
+### You can call the following APIs
+
+- GET `/api/v1/tasks` - Retrieve all tasks.
+- GET `/api/v1/tasks/:id` - Retrieve a specific task by its ID.
+- GET `/api/v1/tasks?completed=false` - Retrieve all tasks by `completed = false`.
+- GET `/api/v1/tasks?completed=true` - Retrieve all tasks by `completed = true`.
+- GET `api/v1/tasks/priority:level` - Retrieve all tasks based on `priority`. Priority value can be `low`, `medium` or `high`.
+- POST `/api/v1/tasks` - Create a new task with the required fields (title, description, completed).
+- GUT `/api/v1/tasks/:id` - Update an existing task by its ID.
+- DELETE `/api/v1/tasks/:id` - Delete a task by its ID.
 
 ### How to Run this Project
 
-Navigate to this folder in your terminal and run this `npm run dev` .
+1. Navigate to `server` folder in your terminal and run this `npm run dev` to start the server on port 3000.
+2. Navigate to `client` folder in your terminal and run this `ng serve` to run the frontend on port 4200.
 
 ## Daily logs
 
@@ -49,3 +63,8 @@ Navigate to this folder in your terminal and run this `npm run dev` .
 1. Completed all the APIs for CRUD operations.
 2. Improved error handling and HTTP status codes.
 3. Changed the folder structure to better it.
+
+### 3rd October to 5th October
+
+1. Sorry could not update daily logs.
+2. Completed backend with extra functionalities on 5th October 23:20.
